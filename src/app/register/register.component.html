@@ -1,0 +1,68 @@
+<div class="register-container" style="margin: 0 auto; top: auto">
+  <h2>Customer Registration - Online Grocery Store</h2>
+
+  <form (ngSubmit)="onRegister()" #registerForm="ngForm">
+    <label for="name">Customer Name:</label>
+    <input
+      id="name"
+      type="text"
+      [(ngModel)]="customer.name"
+      name="name"
+      required
+      pattern="[A-Za-z ]+"
+      placeholder="Enter full name"
+    />
+
+    <label for="email">Email:</label>
+    <input
+      id="email"
+      type="email"
+      [(ngModel)]="customer.email"
+      name="email"
+      required
+      placeholder="Enter email address"
+    />
+
+    <label for="password">Password:</label>
+    <input
+      id="password"
+      type="password"
+      [(ngModel)]="customer.password"
+      name="password"
+      required
+      placeholder="Enter password"
+    />
+
+    <label for="address">Address:</label>
+    <textarea
+      id="address"
+      [(ngModel)]="customer.address"
+      name="address"
+      required
+      placeholder="Enter your address"
+    ></textarea>
+
+    <label for="contact">Contact Number:</label>
+    <input
+      id="contact"
+      type="text"
+      [(ngModel)]="customer.contact"
+      name="contact"
+      required
+      pattern="[0-9]{10}"
+      placeholder="Enter 10-digit number"
+    />
+
+    <button type="submit">Register</button>
+  </form>
+
+  <div
+    *ngIf="successMessage"
+    class="success"
+    [innerHTML]="successMessage"
+  ></div>
+  <div class="register-link">
+    <p>Already registered? <a routerLink="/login">Login here</a></p>
+  </div>
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+</div>
