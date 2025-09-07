@@ -9,6 +9,8 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component'; // ✅ updated
 import { HttpClientModule } from '@angular/common/http';
+import { CartComponent } from './cart/cart.component';
+import { ProfileComponent } from './profile/profile.component';
 
 // ✅ Define routes
 const routes: Routes = [
@@ -25,7 +27,9 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    AdminDashboardComponent, // ✅ updated
+    AdminDashboardComponent,
+    CartComponent,
+    ProfileComponent, // ✅ updated
   ],
   imports: [
     BrowserModule,

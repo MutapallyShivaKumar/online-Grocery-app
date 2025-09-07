@@ -1,0 +1,87 @@
+<nav>
+  <a routerLink="/home">Home</a>
+  <a routerLink="/profile" class="active">My Profile</a>
+  <a routerLink="/cart">Cart</a>
+  <a (click)="logout()">Logout</a>
+</nav>
+
+<header>
+  <h2>My Profile</h2>
+</header>
+
+<div class="container">
+  <form (ngSubmit)="saveProfile()">
+    <!-- Customer ID -->
+    <label for="customerId">Customer ID:</label>
+    <input
+      id="customerId"
+      type="text"
+      [(ngModel)]="user.customerId"
+      name="customerId"
+      readonly
+    />
+
+    <!-- Customer Name -->
+    <label for="name">Customer Name:</label>
+    <input
+      id="name"
+      type="text"
+      [(ngModel)]="user.name"
+      name="name"
+      [disabled]="!editable"
+      placeholder="Enter your name"
+    />
+
+    <!-- Email -->
+    <label for="email">Email:</label>
+    <input
+      id="email"
+      type="email"
+      [(ngModel)]="user.email"
+      name="email"
+      [disabled]="!editable"
+      placeholder="Enter your email"
+    />
+
+    <!-- Password -->
+    <label for="password">Password:</label>
+    <input
+      id="password"
+      type="password"
+      [(ngModel)]="user.password"
+      name="password"
+      [disabled]="!editable"
+      placeholder="Enter your password"
+    />
+
+    <!-- Address -->
+    <label for="address">Address:</label>
+    <textarea
+      id="address"
+      [(ngModel)]="user.address"
+      name="address"
+      [disabled]="!editable"
+      placeholder="Enter your address"
+    ></textarea>
+
+    <!-- Contact Number -->
+    <label for="contact">Contact Number:</label>
+    <input
+      id="contact"
+      type="text"
+      [(ngModel)]="user.contact"
+      name="contact"
+      [disabled]="!editable"
+      placeholder="Enter contact number"
+    />
+
+    <!-- Buttons -->
+    <div class="buttons">
+      <button type="button" (click)="enableEditing()" *ngIf="!editable">
+        Update
+      </button>
+      <button type="submit" [disabled]="!editable">Save</button>
+    </div>
+  </form>
+  <p class="success">{{ successMsg }}</p>
+</div>

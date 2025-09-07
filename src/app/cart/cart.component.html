@@ -1,0 +1,38 @@
+<nav>
+  <a routerLink="/home">Home</a>
+  <a routerLink="/profile">My Profile</a>
+  <a routerLink="/cart">Cart</a>
+  <a (click)="logout()">Logout</a>
+</nav>
+
+<p *ngIf="orderSuccess" class="success">Order Placed Successfully</p>
+
+<div class="cart-container">
+  <div class="cart-items">
+    <h3>Cart Items</h3>
+    <div *ngIf="cart.length === 0">Your cart is empty.</div>
+    <div *ngFor="let item of cart">
+      <span>{{ item.name }} - ${{ item.price }}</span>
+      <button (click)="removeItem(item.id)">Delete</button>
+    </div>
+  </div>
+
+  <div class="cart-summary" *ngIf="cart.length > 0">
+    <h3>Summary</h3>
+    <p *ngFor="let item of cart">{{ item.name }}: ${{ item.price }}</p>
+    <p><strong>Total: ${{ total }}</strong></p>
+    <button (click)="checkout()">Checkout</button>
+  </div>
+</div>
+
+<div *ngIf="orderInvoice">
+  <h3>Invoice</h3>
+  <p><strong>Name:</strong> {{ orderInvoice.name }}</p>
+  <p><strong>Customer ID:</strong> {{ orderInvoice.customerId }}</p>
+  <p><strong>Date:</strong> {{ orderInvoice.date }}</p>
+  <h4>Items:</h4>
+  <ul>
+    <li *ngFor="let item of orderInvoice.items">{{ item.name }} - ${{ item.price }}</li>
+  </ul>
+  <p><strong>Total Paid:</strong> ${{ orderInvoice.total }}</p>
+</div>

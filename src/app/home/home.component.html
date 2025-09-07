@@ -1,1 +1,16 @@
-<p>home works!</p>
+<nav>
+  <a routerLink="/home">Home</a>
+  <a routerLink="/profile">My Profile</a>
+  <a routerLink="/cart">Cart</a>
+  <a (click)="logout()">Logout</a>
+</nav>
+
+<header>Hello {{ user.name }} to Online Grocery Store</header>
+
+<div class="product-grid">
+  <div *ngFor="let product of products" class="product-card">
+    <h3>{{ product.name }}</h3>
+    <p>Price: ${{ product.price }}</p>
+    <button (click)="addToCart(product.id)">Add to Cart</button>
+  </div>
+</div>
